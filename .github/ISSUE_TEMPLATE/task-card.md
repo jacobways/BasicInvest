@@ -17,8 +17,7 @@ assignees: ''
 - 시간 : `3h` ~ `24h`
 
 ### Projects 선택
+- 1차 기능구현
 
 ### Milestone 선택
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+- 1차 기능구현
