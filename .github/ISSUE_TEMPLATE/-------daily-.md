@@ -1,7 +1,7 @@
 ---
 name: 회고 양식 (Daily)
 about: retrospect
-title: ''
+title: [21.12.xx] 
 labels: retrospect
 assignees: ''
 
@@ -18,5 +18,3 @@ assignees: ''
 
 ### Future action(행동) : 그래서 내가 앞으로 취할 행동을 미래형으로 적는다
 - 내용
-**Additional context**
-Add any other context or screenshots about the feature request here.
