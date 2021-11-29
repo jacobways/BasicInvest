@@ -1,7 +1,7 @@
 ---
 name: 회고 양식 (Daily)
 about: retrospect
-title: [21.12.xx] 
+title: "[21.12.xx] 회고"
 labels: retrospect
 assignees: ''
 
