@@ -1,4 +1,4 @@
-# 투자걸음마 (Easy Investing)
+# 투자 걸음마 (Easy Investing)
 ### 경제 & 투자 (Economy & Investing)
 - 투자를 시작하시는 초보자들을 위한 서비스입니다.
 - 투자에 필요한 최소한의 경제/금융 지표만 보여줍니다.
