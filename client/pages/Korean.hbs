@@ -1,9 +1,79 @@
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Korean</title>
-</head>
-<body>
-  Korean info
-</body>
+<main>
+  <h1>한국 지표</h1>
+  <br>
+  <span>아래 지표들은 주가를 예측하는 선행지표가 아닌 현재 증시를 진단하는 지표입니다.</span>
+  <br>
+  <section>
+    <h3>수출지표</h3>
+  </section>
+
+  <button id="button">script 테스트 버튼</button>
+  <script>
+    button.onclick = function () {
+      console.log('button click')
+    }
+  </script>
+  
+  <section>
+    <h3>환율</h3>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+const ctx = document.getElementById('myChart');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+  </section>
+
+  <section>
+    <h3>코스피</h3>
+  </section>
+
+  <section>
+    <h3>코스닥</h3>
+  </section>
+
+  <section>
+    <h3>외국인 매매동향 (코스피)</h3>
+  </section>
+
+  <section>
+    <h3>외국인 매매동향 (코스닥)</h3>
+  </section>
+
+  <section>
+    <h3>신용잔고</h3>
+  </section>
+
+</main>
