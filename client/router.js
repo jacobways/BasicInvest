@@ -1,9 +1,9 @@
 // template
-const LandingPageTemplate = require("./pages/LandingPage.hbs");
-const KoreanTemplate = require("./pages/Korean.hbs");
-const USATemplate = require("./pages/USA.hbs");
-const CommodityTemplate = require("./pages/Commodity.hbs");
-const OpinionTemplate = require("./pages/Opinion.hbs");
+const LandingPageTemplate = require("./pages/LandingPage.js");
+const KoreanTemplate = require("./pages/Korean.js");
+const USATemplate = require("./pages/USA.js");
+const CommodityTemplate = require("./pages/Commodity.js");
+const OpinionTemplate = require("./pages/Opinion.js");
 
 const LandingPage = LandingPageTemplate();
 const Korean = KoreanTemplate();
@@ -35,7 +35,7 @@ const historyRouterPush = (pathName, element) => {
 
 // render
 const renderHTML = (element, route) => {
-  element.innerHTML = route;
+  element.appendChild(route);
 };
 
 module.exports = {
