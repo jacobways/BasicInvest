@@ -8,6 +8,7 @@ router.get('/kospi', chartDataController.kospi);
 // router.get('/consumersales', chartDataController.consumersales);
 // router.get('/creditbalance', chartDataController.creditbalance);
 // router.get('/employmentrate', chartDataController.employmentrate);
+router.get('/exchangerate', chartDataController.exchangeRate);
 // router.get('/futuresoptiontrend', chartDataController.futuresoptiontrend);
 // router.get('/koreanexport', chartDataController.koreanexport);
 // router.get('/oilprice', chartDataController.oilprice);

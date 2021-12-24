@@ -35,6 +35,7 @@ const historyRouterPush = (pathName, element) => {
 
 // render
 const renderHTML = (element, route) => {
+  if (document.querySelector('main')) document.querySelector('main').remove();
   element.appendChild(route);
 };
 

@@ -22,7 +22,7 @@ module.exports = function createKoreanHTML () {
   canvasExRate.setAttribute('id', 'ExRateChart')
   canvasExRate.setAttribute('width', '200')
   canvasExRate.setAttribute('height', '200')
-  ExRateChart(canvasExRate)
+  ExRateChart(canvasExRate, '2021-11-01', '2021-11-15')
   sectionExRate.append(h3ExRate, canvasExRate)
 
   const sectionKospi = document.createElement('section')

@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
   Kospi.findAll({
     where:{
       date: {
-        [Op.notBetween]: [startDate, endDate]
+        [Op.between]: [startDate, endDate]
       }
     }
   })

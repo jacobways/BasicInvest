@@ -1,12 +1,17 @@
-module.exports = function ExRateChart(canvasEle) {
+module.exports = async function (canvasEle, startDate, endDate) {
+  
+  let response = await fetch(`http://localhost:5000/exchangerate?startDate=${startDate}&endDate=${endDate}`);
+  let json = await response.json();
+  
+
   const ctx = canvasEle.getContext('2d');
   const myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: json.data.map((el)=>el.date.slice(0,10)),
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'exchange rate',
+            data: json.data.map((el)=>el.value),
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -34,5 +39,7 @@ module.exports = function ExRateChart(canvasEle) {
         }
     }
   });
+  
   return myChart
+
 }
