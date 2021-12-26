@@ -1,4 +1,12 @@
+const createSectionEle = require('../function/chartSection')
 const ExRateChart = require('../chart/exChangeRate.js')
+const KospiChart = require('../chart/Kospi')
+const KosdaqChart = require('../chart/Kosdaq')
+const KospiChart_foreignTrade = require('../chart/foreignTradeKospi')
+const KospiChart_foreignShare = require('../chart/foreignShareKospi')
+const KosdaqChart_foreignTrade = require('../chart/foreignTradeKosdaq')
+const KosdaqChart_foreignShare = require('../chart/foreignShareKosdaq')
+
 
 module.exports = function createKoreanHTML () {
 
@@ -15,40 +23,24 @@ module.exports = function createKoreanHTML () {
   h3Export.textContent = '수출지표'
   sectionExport.append(h3Export)
 
-  const sectionExRate = document.createElement('section')
-  const h3ExRate = document.createElement('h3')
-  h3ExRate.textContent = '환율'
-  const canvasExRate = document.createElement('canvas')
-  canvasExRate.setAttribute('id', 'ExRateChart')
-  canvasExRate.setAttribute('width', '200')
-  canvasExRate.setAttribute('height', '200')
-  ExRateChart(canvasExRate, '2021-11-01', '2021-11-15')
-  sectionExRate.append(h3ExRate, canvasExRate)
+  const sectionExRate = createSectionEle('환율', 'ChartExRate', 'ExRateChart', ExRateChart)
+  
+  const sectionKospi = createSectionEle('코스피', 'ChartKospi', 'KospiChart', KospiChart)
 
-  const sectionKospi = document.createElement('section')
-  const h3Kospi = document.createElement('h3')
-  h3Kospi.textContent = '코스피'
-  sectionKospi.append(h3Kospi)
+  const sectionKosdaq = createSectionEle('코스닥', 'ChartKosdaq', 'KosdaqChart', KosdaqChart)
 
-  const sectionKosdaq = document.createElement('section')
-  const h3Kosdaq = document.createElement('h3')
-  h3Kosdaq.textContent = '코스닥'
-  sectionKosdaq.append(h3Kosdaq)
+  const sectionKospi_ForeignTrade = createSectionEle('외국인 매매동향 (코스피)', 'ChartKospiTrade', 'KospiTradeChart', KospiChart_foreignTrade)
 
-  const sectionFKospiTrend = document.createElement('section')
-  const h3FKospiTrend = document.createElement('h3')
-  h3FKospiTrend.textContent = '외국인 매매동향 (코스피)'
-  sectionFKospiTrend.append(h3FKospiTrend)
+  const sectionKospi_ForeignShare = createSectionEle('외국인 보유 비중 (코스피)', 'ChartKospiShare', 'KospiShareChart', KospiChart_foreignShare)
 
-  const sectionFKosdaqTrend = document.createElement('section')
-  const h3FKosdaqTrend = document.createElement('h3')
-  h3FKosdaqTrend.textContent = '외국인 매매동향 (코스닥)'
-  sectionFKosdaqTrend.append(h3FKosdaqTrend)
+  const sectionKosdaq_ForeignShare = createSectionEle('외국인 매매동향 (코스닥)', 'ChartKosdaqTrade', 'KosdaqTradeChart', KosdaqChart_foreignTrade)
+
+  const sectionKosdaq_ForeignTrade = createSectionEle('외국인 보유 비중 (코스닥)', 'ChartKosdaqShare', 'KosdaqShareChart', KosdaqChart_foreignShare)
 
   const sectionCreditBal = document.createElement('section')
   const h3CreditBal = document.createElement('h3')
   h3CreditBal.textContent = '신용잔고'
-  sectionCreditBal.append(h3CreditBal)  
+  sectionCreditBal.append(h3CreditBal)
 
   main.append(
     h1,
@@ -63,9 +55,13 @@ module.exports = function createKoreanHTML () {
     document.createElement('br'),
     sectionKosdaq,
     document.createElement('br'),
-    sectionFKospiTrend,
+    sectionKospi_ForeignTrade,
     document.createElement('br'),
-    sectionFKosdaqTrend,
+    sectionKospi_ForeignShare,
+    document.createElement('br'),
+    sectionKosdaq_ForeignShare,
+    document.createElement('br'),
+    sectionKosdaq_ForeignTrade,
     document.createElement('br'),
     sectionCreditBal,
   )

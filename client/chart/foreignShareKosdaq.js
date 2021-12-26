@@ -1,8 +1,8 @@
 module.exports = async function (canvasEle, startDate, endDate) {
   
-  let response = await fetch(`http://localhost:5000/exchangerate?startDate=${startDate}&endDate=${endDate}`);
+  let response = await fetch(`http://localhost:5000/foreignKosdaq?startDate=${startDate}&endDate=${endDate}`);
   let json = await response.json();
-  let Data = json.data.map((el)=>el.value)  // DB 데이터 객체의 value
+  let Data = json.data.map((el)=>el.percent)
 
   const ctx = canvasEle.getContext('2d');
   const myChart = new Chart(ctx, {
@@ -40,7 +40,7 @@ module.exports = async function (canvasEle, startDate, endDate) {
         scales: {
             y: {
                 // beginAtZero: true
-                min : Math.round ( (Math.min(...Data) - 20) / 10 ) * 10
+                min : 5
             }
         }
     }

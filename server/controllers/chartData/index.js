@@ -1,5 +1,8 @@
 module.exports = {
   kospi: require('./kospi.js'),
+  kosdaq: require('./kosdaq.js'),
+  foreignKospi : require('./foreignKospi'),
+  foreignKosdaq : require('./foreignKosdaq'),
   // bdi: require('./bdi.js'),
   // bondinterest: require('./bondinterest.js'),
   // consumersales: require('./consumersales.js'),

@@ -3,6 +3,9 @@ const router = express.Router();
 const chartDataController = require("../controllers/chartData")
 
 router.get('/kospi', chartDataController.kospi);
+router.get('/kosdaq', chartDataController.kosdaq);
+router.get('/foreignKospi', chartDataController.foreignKospi);
+router.get('/foreignKosdaq', chartDataController.foreignKosdaq);
 // router.get('/bdi', chartDataController.bdi);
 // router.get('/bondinterest', chartDataController.bondinterest);
 // router.get('/consumersales', chartDataController.consumersales);

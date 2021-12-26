@@ -1,4 +1,4 @@
-const { Kospi } = require('../../models')
+const { ForeignTradeTrend_Kosdaq } = require('../../models')
 const { Op } = require("sequelize");
 require("dotenv").config();
 
@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
 
   const { startDate, endDate } = req.query
 
-  Kospi.findAll({
+  ForeignTradeTrend_Kosdaq.findAll({
     where:{
       date: {
         [Op.between]: [startDate, endDate]
