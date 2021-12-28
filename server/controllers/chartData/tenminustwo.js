@@ -1,4 +1,4 @@
-const { CreditBalance } = require('../../models')
+const { TenMinusTwo } = require('../../models')
 const { Op } = require("sequelize");
 require("dotenv").config();
 
@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
 
   const { startDate, endDate } = req.query
 
-  CreditBalance.findAll({
+  TenMinusTwo.findAll({
     where:{
       date: {
         [Op.between]: [startDate, endDate]

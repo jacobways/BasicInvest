@@ -1,8 +1,8 @@
 module.exports = async function (canvasEle, startDate, endDate) {
   
-  let response = await fetch(`http://localhost:5000/foreignKospi?startDate=${startDate}&endDate=${endDate}`);
+  let response = await fetch(`http://localhost:5000/vix?startDate=${startDate}&endDate=${endDate}`);
   let json = await response.json();
-  let Data = json.data.map((el)=>el.percent)
+  let Data = json.data.map((el)=>el.value)
 
   const ctx = canvasEle.getContext('2d');
   const myChart = new Chart(ctx, {
@@ -40,7 +40,7 @@ module.exports = async function (canvasEle, startDate, endDate) {
         scales: {
             y: {
                 // beginAtZero: true
-                min : Math.round ( (Math.min(...Data) - 2) ) 
+                min : Math.round ( (Math.min(...Data) - 3) )
             }
         }
     }

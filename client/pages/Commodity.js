@@ -1,3 +1,8 @@
+const createSectionEle = require('../function/chartSection')
+const OilPriceChart = require('../chart/oilPrice')
+const BDIChart = require('../chart/BDI')
+const HotRolledChart = require('../chart/BDI')
+
 module.exports = function createCommodityHTML () {
 
   const main = document.createElement('main')
@@ -8,20 +13,11 @@ module.exports = function createCommodityHTML () {
   const span = document.createElement('span')
   span.textContent = '글로벌 상품 정보입니다'
 
-  const sectionOil = document.createElement('section')
-  const h3Oil = document.createElement('h3')
-  h3Oil.textContent = '고용 지표'
-  sectionOil.append(h3Oil)
+  const sectionOil = createSectionEle('WTI 유가', 'ChartOilPrice', 'OilPriceChart', OilPriceChart)
 
-  const sectionBDI = document.createElement('section')
-  const h3BDI = document.createElement('h3')
-  h3BDI.textContent = 'BDI Index'
-  sectionBDI.append(h3BDI)
+  const sectionBDI = createSectionEle('BDI 지수', 'ChartBDI', 'BDIChart', BDIChart)
 
-  const sectionHotRolled = document.createElement('section')
-  const h3HotRolled = document.createElement('h3')
-  h3HotRolled.textContent = '중국 열연'
-  sectionHotRolled.append(h3HotRolled)
+  const sectionHotRolled = createSectionEle('중국 열연', 'ChartHotRolledPrice', 'OilPriceChart', HotRolledChart)
 
   main.append(
     h1,

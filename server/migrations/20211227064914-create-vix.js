@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('CreditBalances', {
+    await queryInterface.createTable('Vixes', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,14 +11,8 @@ module.exports = {
       date: {
         type: Sequelize.DATE
       },
-      all: {
-        type: Sequelize.INTEGER
-      },
-      kospi: {
-        type: Sequelize.INTEGER
-      },
-      kosdaq: {
-        type: Sequelize.INTEGER
+      value: {
+        type: Sequelize.DECIMAL(4,2)
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +25,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('CreditBalances');
+    await queryInterface.dropTable('Vixes');
   }
 };

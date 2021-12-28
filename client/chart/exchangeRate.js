@@ -40,7 +40,7 @@ module.exports = async function (canvasEle, startDate, endDate) {
         scales: {
             y: {
                 // beginAtZero: true
-                min : Math.round ( (Math.min(...Data) - 20) / 10 ) * 10
+                min : Math.round ( (Math.min(...Data) - 10) / 10 ) * 10
             }
         }
     }

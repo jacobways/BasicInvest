@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class RawMaterials extends Model {
+  class Vix extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  RawMaterials.init({
+  Vix.init({
     date: DataTypes.DATE,
-    value: DataTypes.INTEGER
+    value: DataTypes.DECIMAL(4,2)
   }, {
     sequelize,
-    modelName: 'RawMaterials',
+    modelName: 'Vix',
   });
-  return RawMaterials;
+  return Vix;
 };

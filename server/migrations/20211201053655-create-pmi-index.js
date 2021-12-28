@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       value: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL(3,1)
       },
       createdAt: {
         allowNull: false,

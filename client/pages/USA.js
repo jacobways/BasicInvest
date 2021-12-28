@@ -1,3 +1,11 @@
+const createSectionEle = require('../function/chartSection')
+const createSectionMonthlyEle = require('../function/chartSectionMonthly')
+const DowChart = require('../chart/Dow')
+const NasdaqChart = require('../chart/Nasdaq')
+const PMIChart = require('../chart/PMI')
+const VIXChart = require('../chart/VIX')
+const SpreadChart = require('../chart/tenMinusTwo')
+
 module.exports = function createUSAHTML () {
 
   const main = document.createElement('main')
@@ -13,35 +21,24 @@ module.exports = function createUSAHTML () {
   h3Employ.textContent = '고용 지표'
   sectionEmploy.append(h3Employ)
 
-  const sectionPMI = document.createElement('section')
-  const h3PMI = document.createElement('h3')
-  h3PMI.textContent = 'PMI Index'
-  sectionPMI.append(h3PMI)
+  const sectionPMI = createSectionMonthlyEle('ISM 제조업 지수 (PMI)', 'ChartPMI', 'PMIChart', PMIChart)
 
-  const sectionSpread = document.createElement('section')
-  const h3Spread = document.createElement('h3')
-  h3Spread.textContent = '장단기 금리차'
-  sectionSpread.append(h3Spread)
+  const sectionSpread = createSectionEle('10년물 - 2년물 국채 금리차', 'ChartSpread', 'SpreadChart', SpreadChart)
 
   const sectionConsumerSales = document.createElement('section')
   const h3ConsumerSales = document.createElement('h3')
   h3ConsumerSales.textContent = '소비판매지수'
   sectionConsumerSales.append(h3ConsumerSales)
 
-  const sectionDOW = document.createElement('section')
-  const h3DOW = document.createElement('h3')
-  h3DOW.textContent = '다우 지수'
-  sectionDOW.append(h3DOW)
+  const sectionDOW = createSectionEle('다우존스 지수', 'ChartDow', 'DowChart', DowChart)
 
-  const sectionNasdaq = document.createElement('section')
-  const h3Nasdaq = document.createElement('h3')
-  h3Nasdaq.textContent = '나스닥 지수'
-  sectionNasdaq.append(h3Nasdaq)
+  const sectionNasdaq = createSectionEle('나스닥 지수', 'ChartNasdaq', 'NasdaqChart', NasdaqChart)
+  // const sectionNasdaq = document.createElement('section')
+  // const h3Nasdaq = document.createElement('h3')
+  // h3Nasdaq.textContent = '나스닥 지수'
+  // sectionNasdaq.append(h3Nasdaq)
 
-  const sectionVix = document.createElement('section')
-  const h3Vix = document.createElement('h3')
-  h3Vix.textContent = 'vix 지수'
-  sectionVix.append(h3Vix)  
+  const sectionVIX = createSectionEle('공포 지수 (VIX)', 'ChartVIX', 'VIXChart', VIXChart)
 
   main.append(
     h1,
@@ -60,7 +57,7 @@ module.exports = function createUSAHTML () {
     document.createElement('br'),
     sectionNasdaq,
     document.createElement('br'),
-    sectionVix,
+    sectionVIX,
   )
 
   return main;

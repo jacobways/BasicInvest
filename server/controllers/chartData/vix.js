@@ -1,4 +1,4 @@
-const { CreditBalance } = require('../../models')
+const { Vix } = require('../../models')
 const { Op } = require("sequelize");
 require("dotenv").config();
 
@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
 
   const { startDate, endDate } = req.query
 
-  CreditBalance.findAll({
+  Vix.findAll({
     where:{
       date: {
         [Op.between]: [startDate, endDate]
