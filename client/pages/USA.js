@@ -1,5 +1,5 @@
-const createSectionEle = require('../function/chartSection')
-const createSectionMonthlyEle = require('../function/chartSectionMonthly')
+const createSectionEle = require('../templates/chartSection')
+const createSectionMonthlyEle = require('../templates/chartSectionMonthly')
 const DowChart = require('../chart/Dow')
 const NasdaqChart = require('../chart/Nasdaq')
 const PMIChart = require('../chart/PMI')

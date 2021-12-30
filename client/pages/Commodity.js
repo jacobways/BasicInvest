@@ -1,4 +1,4 @@
-const createSectionEle = require('../function/chartSection')
+const createSectionEle = require('../templates/chartSection')
 const OilPriceChart = require('../chart/oilPrice')
 const BDIChart = require('../chart/BDI')
 const HotRolledChart = require('../chart/BDI')

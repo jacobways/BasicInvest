@@ -2,9 +2,12 @@ const express = require('express')
 const app = express()
 const port = 5000
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
 const chartDataRouter = require("./routes/chartData")
 const userRouter = require("./routes/user")
 
+app.use(express.json());
 app.use(
   cors({
     origin: "http://localhost:8080",

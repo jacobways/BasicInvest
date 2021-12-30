@@ -1,5 +1,5 @@
-const createSectionEle = require('../function/chartSection')
-const createSectionMonthlyEle = require('../function/chartSectionMonthly')
+const createSectionEle = require('../templates/chartSection')
+const createSectionMonthlyEle = require('../templates/chartSectionMonthly')
 const ExRateChart = require('../chart/exChangeRate.js')
 const KospiChart = require('../chart/Kospi')
 const KosdaqChart = require('../chart/Kosdaq')
@@ -40,11 +40,7 @@ module.exports = function createKoreanHTML () {
   const sectionKosdaq_ForeignTrade = createSectionEle('외국인 보유 비중 (코스닥)', 'ChartKosdaqShare', 'KosdaqShareChart', KosdaqChart_foreignShare)
 
   const sectionCreditBalance = createSectionMonthlyEle('국내 신용잔고', 'ChartCreditBalance', 'CreditBalanceChart', CreditBalanceChart)
-  // const sectionCreditBal = document.createElement('section')
-  // const h3CreditBal = document.createElement('h3')
-  // h3CreditBal.textContent = '신용잔고'
-  // sectionCreditBal.append(h3CreditBal)
-
+  
   main.append(
     h1,
     document.createElement('br'),

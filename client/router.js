@@ -4,12 +4,18 @@ const KoreanTemplate = require("./pages/Korean.js");
 const USATemplate = require("./pages/USA.js");
 const CommodityTemplate = require("./pages/Commodity.js");
 const OpinionTemplate = require("./pages/Opinion.js");
+const RegisterTemplate = require("./pages/Register.js")
+const LoginTemplate = require("./pages/Login.js")
+const MyPageTemplate = require("./pages/MyPage.js")
 
 const LandingPage = LandingPageTemplate();
 const Korean = KoreanTemplate();
 const USA = USATemplate();
 const Commodity = CommodityTemplate();
 const Opinion = OpinionTemplate();
+const Register = RegisterTemplate();
+const Login = LoginTemplate();
+const MyPage = MyPageTemplate();
 
 const routes = {
   "/": LandingPage,
@@ -17,6 +23,9 @@ const routes = {
   "/usa": USA,
   "/commodity": Commodity,
   "/opinion" : Opinion,
+  "/register" : Register,
+  "/login": Login,
+  "/mypage": MyPage,
 };
 
 // entry point

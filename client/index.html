@@ -14,10 +14,23 @@
     <span route="/usa" class="history" >미국 지표</span>
     <span route="/commodity" class="history" >상품 원자재</span>
     <span route="/opinion" class="history" >투자 의견</span>
+    <span id="login" route="/login" class="history" >로그인</span>
+    <span id="register" route="/register" class="history" >회원가입</span>
+    <span id="mypage" route="/mypage" class="history hidden">마이페이지</span>
+    <span id="logout" class="hidden" >로그아웃</span>
   </nav>
   <div id=root>
-
+    <!-- <script>
+      const spanLogin = document.createElement('span')
+      spanLogin.setAttribute('route', '/login')
+      spanLogin.setAttribute('class', 'history')
+      spanLogin.textContent = '로그인'
+      const spanRegister = document.createElement('span')
+      spanRegister.setAttribute('route', '/register')
+      spanRegister.setAttribute('class', 'history')
+      spanRegister.textContent = '회원가입'
+      document.querySelector('.nav').append(spanLogin, spanRegister)
+    </script> -->
   </div>
-  
 </body>
 </html>
