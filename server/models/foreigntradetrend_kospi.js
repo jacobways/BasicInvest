@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   ForeignTradeTrend_Kospi.init({
     date: DataTypes.DATE,
     value: DataTypes.INTEGER,
+    average: DataTypes.INTEGER,
     percent: DataTypes.DECIMAL(3,1)
   }, {
     sequelize,

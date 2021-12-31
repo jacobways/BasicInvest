@@ -42,6 +42,11 @@ module.exports = async function (canvasEle, startDate, endDate) {
                 // beginAtZero: true
                 min : Math.round ( (Math.min(...Data) - 50) / 100 ) * 100
             }
+        },
+        elements: {
+            point:{
+                radius: 0
+            }
         }
     }
   });

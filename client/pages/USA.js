@@ -25,18 +25,9 @@ module.exports = function createUSAHTML () {
 
   const sectionSpread = createSectionEle('10년물 - 2년물 국채 금리차', 'ChartSpread', 'SpreadChart', SpreadChart)
 
-  const sectionConsumerSales = document.createElement('section')
-  const h3ConsumerSales = document.createElement('h3')
-  h3ConsumerSales.textContent = '소비판매지수'
-  sectionConsumerSales.append(h3ConsumerSales)
-
   const sectionDOW = createSectionEle('다우존스 지수', 'ChartDow', 'DowChart', DowChart)
 
   const sectionNasdaq = createSectionEle('나스닥 지수', 'ChartNasdaq', 'NasdaqChart', NasdaqChart)
-  // const sectionNasdaq = document.createElement('section')
-  // const h3Nasdaq = document.createElement('h3')
-  // h3Nasdaq.textContent = '나스닥 지수'
-  // sectionNasdaq.append(h3Nasdaq)
 
   const sectionVIX = createSectionEle('공포 지수 (VIX)', 'ChartVIX', 'VIXChart', VIXChart)
 
@@ -50,8 +41,6 @@ module.exports = function createUSAHTML () {
     sectionPMI,
     document.createElement('br'),
     sectionSpread,
-    document.createElement('br'),
-    sectionConsumerSales,
     document.createElement('br'),
     sectionDOW,
     document.createElement('br'),

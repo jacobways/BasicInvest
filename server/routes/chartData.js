@@ -15,7 +15,7 @@ router.get('/creditbalance', chartDataController.creditbalance);
 // router.get('/employmentrate', chartDataController.employmentrate);
 router.get('/exchangerate', chartDataController.exchangerate);
 // router.get('/futuresoptiontrend', chartDataController.futuresoptiontrend);
-// router.get('/koreanexport', chartDataController.koreanexport);
+router.get('/koreanexport', chartDataController.koreanexport);
 router.get('/oilprice', chartDataController.oilprice);
 router.get('/hotrolled', chartDataController.hotrolled);
 router.get('/pmi', chartDataController.pmi);

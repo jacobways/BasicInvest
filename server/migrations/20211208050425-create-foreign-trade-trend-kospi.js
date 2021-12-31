@@ -14,6 +14,9 @@ module.exports = {
       value: {
         type: Sequelize.INTEGER
       },
+      average: {
+        type: Sequelize.INTEGER
+      },
       percent: {
         type: Sequelize.DECIMAL(3,1)
       },

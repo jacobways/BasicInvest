@@ -13,7 +13,7 @@ module.exports = {
   // employmentrate: require('./employmentrate.js'),
   exchangerate: require('./exchangerate.js'),
   // futuresoptiontrend: require('./futuresoptiontrend.js'),
-  // koreanexport: require('./koreanexport.js'),
+  koreanexport: require('./koreanexport.js'),
   oilprice: require('./oilprice.js'),
   hotrolled: require('./hotrolled.js'),
   pmi: require('./pmi.js'),
