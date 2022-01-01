@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 const chartDataRouter = require("./routes/chartData")
 const userRouter = require("./routes/user")
+const trendRouter = require("./routes/trend")
 
 app.use(express.json());
 app.use(
@@ -18,6 +19,7 @@ app.use(
 
 app.use('/', chartDataRouter)
 app.use('/', userRouter)
+app.use('/trend', trendRouter)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
