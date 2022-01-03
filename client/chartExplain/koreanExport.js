@@ -4,8 +4,6 @@ module.exports = async function () {
   let json = await response.json();
   let Data = json.data
 
-  console.log(Data, 'Data')
-
   const div = document.createElement('div')
   
   const explain = document.createElement('div')
