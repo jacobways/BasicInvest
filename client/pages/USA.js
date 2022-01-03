@@ -7,8 +7,11 @@ const EmploymentChartExplain = require('../chartExplain/employmentrate')
 const DowChart = require('../chart/Dow')
 const NasdaqChart = require('../chart/Nasdaq')
 const PMIChart = require('../chart/PMI')
+const PMIChartExplain = require('../chartExplain/PMI')
 const VIXChart = require('../chart/VIX')
+const VIXExplain = require('../chartExplain/VIX')
 const SpreadChart = require('../chart/tenMinusTwo')
+const SpreadChartExplain = require('../chartExplain/tenMinusTwo')
 
 module.exports = async function createUSAHTML () {
 
@@ -22,20 +25,15 @@ module.exports = async function createUSAHTML () {
 
   const sectionEmploy = await createSectionMonthlyExplainEle('미국 실업률', 'ChartEmployment', 'EmploymentChart', EmploymentChart, EmploymentChartExplain)
 
-  // const sectionEmploy = document.createElement('section')
-  // const h3Employ = document.createElement('h3')
-  // h3Employ.textContent = '고용 지표'
-  // sectionEmploy.append(h3Employ)
+  const sectionPMI = await createSectionMonthlyExplainEle('ISM 제조업 지수 (PMI Index)', 'ChartPMI', 'PMIChart', PMIChart, PMIChartExplain)
 
-  const sectionPMI = createSectionMonthlyEle('ISM 제조업 지수 (PMI)', 'ChartPMI', 'PMIChart', PMIChart)
-
-  const sectionSpread = createSectionEle('10년물 - 2년물 국채 금리차', 'ChartSpread', 'SpreadChart', SpreadChart)
+  const sectionSpread = await createSectionExplainEle('미국 국채 장단기 금리차', 'ChartSpread', 'SpreadChart', SpreadChart, SpreadChartExplain)
 
   const sectionDOW = createSectionEle('다우존스 지수', 'ChartDow', 'DowChart', DowChart)
 
   const sectionNasdaq = createSectionEle('나스닥 지수', 'ChartNasdaq', 'NasdaqChart', NasdaqChart)
 
-  const sectionVIX = createSectionEle('공포 지수 (VIX)', 'ChartVIX', 'VIXChart', VIXChart)
+  const sectionVIX = await createSectionExplainEle('공포 지수 (VIX)', 'ChartVIX', 'VIXChart', VIXChart, VIXExplain)
 
   main.append(
     h1,

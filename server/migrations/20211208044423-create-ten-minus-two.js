@@ -14,6 +14,9 @@ module.exports = {
       value: {
         type: Sequelize.DECIMAL(3,2)
       },
+      average: {
+        type: Sequelize.DECIMAL(3,2)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

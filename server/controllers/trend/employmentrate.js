@@ -21,21 +21,21 @@ module.exports = async (req, res) => {
   const middle = middleObj[0].dataValues.value
   const start = startObj[0].dataValues.value
   
-  if (end-start>0) {  // 상승
-    if (middle-start>0) {
-      if (middle-start>=1) {
+  if (end-start>0) {  // 중기 상승
+    if (end-middle>0) {  // 단기 상승
+      if (end-middle>=1) {  // 단기 편차가 1
         res.status(200).json({long: '상승', short: '상승', message: '매도 (하락장으로 전환)'})
       } else {
         res.status(200).json({long: '상승', short: '상승', message: '매도'})
       }
-    } else {
+    } else {  // 단기 하락
       res.status(200).json({long: '상승', short: '하락', message: '매수 준비 (실업률 하락 추세로 전환 시 매수 예정)'})
     }
      
-  } else { // 하락
-      if (middle-start>0) {
+  } else { // 중기 하락
+      if (end-middle>0) {  // 단기 상승
         res.status(200).json({long: '하락', short: '상승', message: '주의 (실업률 상승 추세로 전환 시 매도 예정)'})
-      } else {
+      } else {  // 단기 하락
         res.status(200).json({long: '하락', short: '하락', message: '매수'})
       }
   }

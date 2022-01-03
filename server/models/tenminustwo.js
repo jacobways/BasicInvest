@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   TenMinusTwo.init({
     date: DataTypes.DATE,
-    value: DataTypes.DECIMAL(3,2)
+    value: DataTypes.DECIMAL(3,2),
+    average: DataTypes.DECIMAL(3,2)
   }, {
     sequelize,
     modelName: 'TenMinusTwo',

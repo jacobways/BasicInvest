@@ -1,9 +1,16 @@
 const createSectionEle = require('../templates/chartSection')
-const OilPriceChart = require('../chart/oilPrice')
-const BDIChart = require('../chart/BDI')
-const HotRolledChart = require('../chart/BDI')
+const createSectionExplainEle = require('../templates/chartSection_explain')
 
-module.exports = function createCommodityHTML () {
+const OilPriceChart = require('../chart/oilPrice')
+const OilPriceExplain = require('../chartExplain/oilPrice')
+
+const BDIChart = require('../chart/BDI')
+const BDIExplain = require('../chartExplain/BDI')
+
+const HotRolledChart = require('../chart/BDI')
+const HotRolledExplain = require('../chartExplain/hotRolled')
+
+module.exports = async function createCommodityHTML () {
 
   const main = document.createElement('main')
 
@@ -13,11 +20,11 @@ module.exports = function createCommodityHTML () {
   const span = document.createElement('span')
   span.textContent = '글로벌 상품 정보입니다'
 
-  const sectionOil = createSectionEle('WTI 유가', 'ChartOilPrice', 'OilPriceChart', OilPriceChart)
+  const sectionOil = await createSectionExplainEle('WTI 유가', 'ChartOilPrice', 'OilPriceChart', OilPriceChart, OilPriceExplain)
 
-  const sectionBDI = createSectionEle('BDI 지수', 'ChartBDI', 'BDIChart', BDIChart)
+  const sectionBDI = await createSectionExplainEle('BDI 지수', 'ChartBDI', 'BDIChart', BDIChart, BDIExplain)
 
-  const sectionHotRolled = createSectionEle('중국 열연', 'ChartHotRolledPrice', 'OilPriceChart', HotRolledChart)
+  const sectionHotRolled = await createSectionExplainEle('중국 열연', 'ChartHotRolledPrice', 'OilPriceChart', HotRolledChart, HotRolledExplain)
 
   main.append(
     h1,
