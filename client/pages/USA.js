@@ -1,12 +1,16 @@
 const createSectionEle = require('../templates/chartSection')
+const createSectionExplainEle = require('../templates/chartSection_explain')
 const createSectionMonthlyEle = require('../templates/chartSectionMonthly')
+const createSectionMonthlyExplainEle = require('../templates/chartSectionMonthly_explain')
+const EmploymentChart = require('../chart/employmentrate')
+const EmploymentChartExplain = require('../chartExplain/employmentrate')
 const DowChart = require('../chart/Dow')
 const NasdaqChart = require('../chart/Nasdaq')
 const PMIChart = require('../chart/PMI')
 const VIXChart = require('../chart/VIX')
 const SpreadChart = require('../chart/tenMinusTwo')
 
-module.exports = function createUSAHTML () {
+module.exports = async function createUSAHTML () {
 
   const main = document.createElement('main')
 
@@ -16,10 +20,12 @@ module.exports = function createUSAHTML () {
   const span = document.createElement('span')
   span.textContent = '아래 지표들은 주로 미래를 예측하는 선행지표입니다.'
 
-  const sectionEmploy = document.createElement('section')
-  const h3Employ = document.createElement('h3')
-  h3Employ.textContent = '고용 지표'
-  sectionEmploy.append(h3Employ)
+  const sectionEmploy = await createSectionMonthlyExplainEle('미국 실업률', 'ChartEmployment', 'EmploymentChart', EmploymentChart, EmploymentChartExplain)
+
+  // const sectionEmploy = document.createElement('section')
+  // const h3Employ = document.createElement('h3')
+  // h3Employ.textContent = '고용 지표'
+  // sectionEmploy.append(h3Employ)
 
   const sectionPMI = createSectionMonthlyEle('ISM 제조업 지수 (PMI)', 'ChartPMI', 'PMIChart', PMIChart)
 

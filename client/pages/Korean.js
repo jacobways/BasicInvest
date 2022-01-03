@@ -1,4 +1,5 @@
 const createSectionEle = require('../templates/chartSection')
+const createSectionExplainEle = require('../templates/chartSection_explain')
 const createSectionMonthlyEle = require('../templates/chartSectionMonthly')
 const createSectionMonthlyExplainEle = require('../templates/chartSectionMonthly_explain')
 const KoreanExportChart = require ('../chart/KoreanExport.js')
@@ -7,8 +8,11 @@ const ExRateChartExplain = require('../chartExplain/koreanExport')
 const KospiChart = require('../chart/Kospi')
 const KosdaqChart = require('../chart/Kosdaq')
 const KospiChart_foreignTrade = require('../chart/foreignTradeKospi')
+const KospiChartExplain_foreignTrade = require('../chartExplain/foreignTradeKospi')
 const KosdaqChart_foreignTrade = require('../chart/foreignTradeKosdaq')
+const KosdaqChartExplain_foreignTrade = require('../chartExplain/foreignTradeKosdaq')
 const CreditBalanceChart = require('../chart/creditBalance')
+const CreditBalanceChartExplain = require('../chartExplain/creditBalance')
 
 module.exports = async function createKoreanHTML () {
 
@@ -26,13 +30,13 @@ module.exports = async function createKoreanHTML () {
 
   const sectionKoreanExport = await createSectionMonthlyExplainEle('한국 수출지표', 'ChartKoreanExport', 'KoreanExportChart', KoreanExportChart, ExRateChartExplain)
 
-  const sectionKospi_ForeignTrade = createSectionEle('외국인 매매동향 (코스피)', 'ChartKospiTrade', 'KospiTradeChart', KospiChart_foreignTrade)
+  const sectionKospi_ForeignTrade = await createSectionExplainEle('외국인 매매동향 (코스피)', 'ChartKospiTrade', 'KospiTradeChart', KospiChart_foreignTrade, KospiChartExplain_foreignTrade)
 
-  const sectionKosdaq_ForeignTrade = createSectionEle('외국인 보유 비중 (코스닥)', 'ChartKosdaqShare', 'KosdaqShareChart', KosdaqChart_foreignTrade)
+  const sectionKosdaq_ForeignTrade = await createSectionExplainEle('외국인 보유 비중 (코스닥)', 'ChartKosdaqShare', 'KosdaqShareChart', KosdaqChart_foreignTrade, KosdaqChartExplain_foreignTrade)
 
   const sectionExRate = createSectionEle('환율', 'ChartExRate', 'ExRateChart', ExRateChart)
   
-  const sectionCreditBalance = createSectionMonthlyEle('국내 신용잔고', 'ChartCreditBalance', 'CreditBalanceChart', CreditBalanceChart)
+  const sectionCreditBalance = await createSectionMonthlyExplainEle('국내 신용잔고', 'ChartCreditBalance', 'CreditBalanceChart', CreditBalanceChart, CreditBalanceChartExplain)
   
   main.append(
     h1,

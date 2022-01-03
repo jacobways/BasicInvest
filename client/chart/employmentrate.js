@@ -1,8 +1,8 @@
 module.exports = async function (canvasEle, startDate, endDate) {
   
-  let response = await fetch(`http://localhost:5000/nasdaq?startDate=${startDate}&endDate=${endDate}`);
+  let response = await fetch(`http://localhost:5000/employmentrate?startDate=${startDate}&endDate=${endDate}`);
   let json = await response.json();
-  let Data = json.data.map((el)=>el.value)
+  let Data = json.data.map((el)=>el.value)  // DB 데이터 객체의 value
 
   const ctx = canvasEle.getContext('2d');
   const myChart = new Chart(ctx, {
@@ -30,7 +30,7 @@ module.exports = async function (canvasEle, startDate, endDate) {
         scales: {
             y: {
                 // beginAtZero: true
-                min : Math.round ( (Math.min(...Data) - 500) / 1000 ) * 1000
+                min : Math.round ( (Math.min(...Data) - 1) )
             }
         },
         elements: {

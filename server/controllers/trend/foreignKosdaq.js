@@ -69,6 +69,7 @@ module.exports = async (req, res) => {
   const end = endObj[0].dataValues.average;
   console.log('end-----', end)
 
+  // lastDate의 년월보다 작은 데이터 중의 최대값
   const nextObj = await ForeignTradeTrend_Kosdaq.max('date', {where: { date: {[Op.lt]: getYearMonth(lastDate)}}})
   const nextDate = getDate(String(nextObj))
 

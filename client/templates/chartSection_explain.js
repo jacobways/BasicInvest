@@ -9,14 +9,24 @@ module.exports = async function (chartName, divChartId, canvasChartId, chartModu
     return year + "-" + month + "-" + day;
   }
 
-  // new Date 객체 형식을 yyyy-mm-dd 로 바꿔주되, 1년 전 데이터 표시
-  function back1Year (date) {
+  // new Date 객체 형식을 yyyy-mm-dd 로 바꿔주되, 3달 전 데이터 표시
+  function back3month (date) {
     let year = date.getFullYear();
     let month = ("0" + (1 + date.getMonth())).slice(-2);
     let day = ("0" + date.getDate()).slice(-2);
 
-    year-=1
-    if (month === '2' && day === '29') day -= 1
+    if (Number(day) === 31) day = "30"
+
+    if (Number(month) < 4) {
+      year -= 1;
+      month = Number(month) + 12 - 3
+    } else {
+      month -= 3
+    }
+
+    if (String(month).length === 1) month = "0" + month
+
+    if (Number(month) === 2 && Number(day)>28) day = "28"
 
     return year + "-" + month + "-" + day;
   }  
@@ -28,7 +38,7 @@ module.exports = async function (chartName, divChartId, canvasChartId, chartModu
   const h3 = document.createElement('h3')  
   h3.textContent = `${chartName}`
 
-  let startDate = back1Year(new Date())  // 차트 x축 시작 날짜
+  let startDate = back3month(new Date())  // 차트 x축 시작 날짜
   let endDate = getDate(new Date())       // 차트 x축 끝 날짜
 
   // chart의 날짜를 선택하기 위한 form 제작
