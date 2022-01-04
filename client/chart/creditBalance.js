@@ -6,6 +6,42 @@ module.exports = async function (canvasEle, startDate, endDate) {
   let KospiData = json.data.map((el)=>el.kospi)
   let KosdaqData = json.data.map((el)=>el.kosdaq)
 
+
+  let xObj // date 양식 설정 객체
+
+  // 개수 90개 까지는 day
+  // 그 이후에는 월
+  // 1200개 부터 year
+
+  const dayObj = {
+    type: 'time',
+    time: {
+      unit: 'day'
+    }
+  }
+
+  const monthObj = {
+    type: 'time',
+    time: {
+      unit: 'month'
+    }
+  }
+
+  const yearObj = {
+    type: 'time',
+    time: {
+      unit: 'year'
+    }
+  }
+
+  let Length = TotalData.length
+
+  if (Length>60) {
+    xObj = yearObj
+  } else {
+    xObj = monthObj
+  }
+
   const ctx = canvasEle.getContext('2d');
   const myChart = new Chart(ctx, {
     type: 'line',
@@ -48,16 +84,17 @@ module.exports = async function (canvasEle, startDate, endDate) {
                 ]
     },
     options: {
-        // plugins: {
-        //     legend: {
-        //         display: false
-        //     },
-        // },
+        plugins: {
+            legend: {
+                display: false
+            },
+        },
         scales: {
             y: {
                 // beginAtZero: true
                 min : Math.round ( (Math.min(...KospiData, ...KosdaqData) - 5000000) / 10000000 ) * 10000000
-            }
+            },
+            x: xObj
         },
         elements: {
             point:{

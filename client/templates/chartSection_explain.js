@@ -60,29 +60,30 @@ module.exports = async function (chartName, divChartId, canvasChartId, chartModu
     endDate = inputEndDate.value
     // 재렌더링 시 기존 canvas 삭제하고 재생성
     if(document.getElementById(`${canvasChartId}`)) document.getElementById(`${canvasChartId}`).remove()
-    const canvasExRate = document.createElement('canvas')
-    canvasExRate.setAttribute('id', `${canvasChartId}`)
-    divChartExRate.append(canvasExRate)
+    const canvas = document.createElement('canvas')
+    canvas.setAttribute('id', `${canvasChartId}`)
+    divChart.append(canvas)
     // 차트 생성
-    chartModule(canvasExRate, startDate, endDate)  
+    chartModule(canvas, startDate, endDate)  
   })
   form.append(inputStartDate, inputEndDate, button)
 
   // chart canvas를 감싸기 위한 div 제작
-  const divChartExRate = document.createElement('div')
-  divChartExRate.setAttribute('id', `${divChartId}`)
-  divChartExRate.setAttribute('style', 'position: relative; height:200px; width:40vw')
+  const divChart = document.createElement('div')
+  divChart.setAttribute('id', `${divChartId}`)
+  divChart.classList.add('chartBox')
+  // divChart.setAttribute('style', 'position: relative; height:200px; width:40vw')
 
   // chart를 표시할 canvas 제작
-  const canvasExRate = document.createElement('canvas')
-  canvasExRate.setAttribute('id', `${canvasChartId}`)
-  divChartExRate.append(canvasExRate)
+  const canvas = document.createElement('canvas')
+  canvas.setAttribute('id', `${canvasChartId}`)
+  divChart.append(canvas)
   // 차트 생성
-  chartModule(canvasExRate, startDate, endDate)
+  chartModule(canvas, startDate, endDate)
 
   let explain = await chartExplain()
 
-  section.append(h3, form, divChartExRate)
+  section.append(h3, form, divChart)
   section.append(explain)
 
   return section

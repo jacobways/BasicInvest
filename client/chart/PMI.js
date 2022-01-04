@@ -4,6 +4,43 @@ module.exports = async function (canvasEle, startDate, endDate) {
   let json = await response.json();
   let Data = json.data.map((el)=>el.value)
 
+
+  let xObj // date 양식 설정 객체
+
+  // 개수 90개 까지는 day
+  // 그 이후에는 월
+  // 1200개 부터 year
+
+  const dayObj = {
+    type: 'time',
+    time: {
+      unit: 'day'
+    }
+  }
+
+  const monthObj = {
+    type: 'time',
+    time: {
+      unit: 'month'
+    }
+  }
+
+  const yearObj = {
+    type: 'time',
+    time: {
+      unit: 'year'
+    }
+  }
+
+  let Length = Data.length
+
+  if (Length>60) {
+    xObj = yearObj
+  } else {
+    xObj = monthObj
+  }
+
+
   const ctx = canvasEle.getContext('2d');
   const myChart = new Chart(ctx, {
     type: 'line',
@@ -31,7 +68,8 @@ module.exports = async function (canvasEle, startDate, endDate) {
             y: {
                 // beginAtZero: true
                 min : Math.round ( (Math.min(...Data) - 1) )
-            }
+            },
+            x: xObj
         },
         elements: {
             point:{

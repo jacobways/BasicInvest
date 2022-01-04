@@ -21,14 +21,33 @@ module.exports = async (req, res) => {
   const middle = middleObj[0].dataValues.value
   const start = startObj[0].dataValues.value
 
+
+  let crisis = false;
+
+  const crisisArr = await PMI_Index.findAll({
+    where:{
+      id: {
+        [Op.between]: [endId-6, endId]
+      }
+    }
+  })
+
+  for (let ele of crisisArr) {
+    if (ele.dataValues.value <= 50) crisis = true;
+    break;
+  }
+
+
+
+
   if (Math.abs(end-start)<3 && Math.abs(end-middle)<3) { // 박스권
-    res.status(200).json({long: '횡보', short: '횡보', message: '중립'})
+    res.status(200).json({long: '횡보', short: '횡보', message: '중립', crisis: crisis})
 
   } else if (end-start>0) {  // 상승
     if (end-middle>0) {
-      res.status(200).json({long: '상승', short: '상승', message: '매수'})
+      res.status(200).json({long: '상승', short: '상승', message: '매수', crisis: crisis})
     } else {
-      res.status(200).json({long: '상승', short: '하락', message: '주의 (상승 추세가 꺾이면 매도)'})
+      res.status(200).json({long: '상승', short: '하락', message: '주의 (상승 추세가 꺾이면 매도)', crisis:crisis})
     }
      
   } else { // 하락

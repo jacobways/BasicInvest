@@ -1,3 +1,9 @@
+const createSection = require('../templates/economicCycle')
+const EconomyBoomChart = require('../chart/economyBoom')
+const EconomyBoomChartExplain = require('../chartExplain/economyBoom')
+const RecessionChart = require('../chart/recession')
+const RecessionChartExplain = require('../chartExplain/recession')
+const RecessionChartExplain_true = require('../chartExplain/recession_true')
 
 module.exports = async function createOpinionElement () {
 
@@ -23,7 +29,6 @@ module.exports = async function createOpinionElement () {
     PMITrend = PMILong
   }
 
-
   const EmployRes = await fetch(`http://localhost:5000/trend/employmentrate`);
   const EmployJson = await EmployRes.json();
   let EmployLong = EmployJson.long
@@ -39,12 +44,13 @@ module.exports = async function createOpinionElement () {
   const SpreadJson = await SpreadRes.json();
   const SpreadTrend = SpreadJson.data
 
-  let USAOpinion
-  let KoreanOpinion
+  let USAOpinion     // 투자의견, 밑에서 값 할당 예정
+  let KoreanOpinion  // 투자의견, 밑에서 값 할당 예정
 
-  let SpreadOpinion = SpreadJson.message
+  let SpreadOpinion = SpreadJson.message  // 주식 카테고리 추천
 
-  const zero = SpreadJson.zero
+  const zero = SpreadJson.zero  // 최근 장단기 금리차 0이하로 된 적이 있으면 true
+  const crisis = PMIJson.crisis  // 최근 PMI 지수 50이하로 된 적이 있으면 true
 
   // 실업률 하락, PMI 상승 --> 미국 매수, 한국 매수
   // 실업률 하락, PMI 횡보 -> 미국 매수, 한국 중립
@@ -58,6 +64,7 @@ module.exports = async function createOpinionElement () {
   // 실업률 상승, PMI 횡보 --> 미국 중립, 한국 중립 (but zero true면 미국 한국 매도)
   // 실업률 상승, PMI 하락 -> 마국 매도, 한국 매도 
 
+  // 위 수도코드대로 조건에 따라 투자의견 값 할당
   if (EmployTrend === '하락') {
     if (PMITrend === '상승') {
       USAOpinion = '매수'
@@ -77,7 +84,7 @@ module.exports = async function createOpinionElement () {
       USAOpinion = '신중'
       KoreanOpinion = '신중'
     } else if (PMITrend === '하락') {
-      zero ? USAOpinion = '매도' : USAOpinion = '신중'
+      zero || crisis ? USAOpinion = '매도' : USAOpinion = '신중'
       KoreanOpinion = '매도'
     }
 
@@ -86,14 +93,26 @@ module.exports = async function createOpinionElement () {
       USAOpinion = '매수'
       KoreanOpinion = '매수'
     } else if (PMITrend === '횡보') {
-      zero ? USAOpinion = '매도' : USAOpinion = '신중'
-      zero ? KoreanOpinion = '매도' : USAOpinion = '신중'
+      zero || crisis ? USAOpinion = '매도' : USAOpinion = '신중'
+      zero || crisis ? KoreanOpinion = '매도' : USAOpinion = '신중'
     } else if (PMITrend === '하락') {
       USAOpinion = '매도'
       KoreanOpinion = '매도'
     }
   }
 
+  let economicCycle
+  
+  if (USAOpinion === '매도') {
+    if (zero || crisis) {
+      economicCycle = createSection('미국 경기사이클', 'ChartCycle', 'CycleChart', RecessionChart, RecessionChartExplain_true)
+    } else {
+      economicCycle = createSection('미국 경기사이클', 'ChartCycle', 'CycleChart', RecessionChart, RecessionChartExplain)
+    }
+  } else {
+    economicCycle = createSection('미국 경기사이클', 'ChartCycle', 'CycleChart', EconomyBoomChart, EconomyBoomChartExplain)
+  }
+  
   const articleExplain = document.createElement('article')
   const h3Explain = document.createElement('h3')
   h3Explain.textContent = `지표 해석`
@@ -119,7 +138,7 @@ module.exports = async function createOpinionElement () {
   main.append(
     h1,
     document.createElement('br'),
-    articleIntro,
+    economicCycle,
     document.createElement('br'),
     articleExplain,
     document.createElement('br'),

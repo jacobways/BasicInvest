@@ -15,10 +15,10 @@ module.exports = async function createCommodityHTML () {
   const main = document.createElement('main')
 
   const h1 = document.createElement('h1')
-  h1.textContent = 'commodity info'
+  h1.textContent = '인플레이션 및 특정 산업군의 주가를 진단할 수 있습니다.'
 
-  const span = document.createElement('span')
-  span.textContent = '글로벌 상품 정보입니다'
+  const divSection = document.createElement('div')
+  divSection.classList.add('divSection')
 
   const sectionOil = await createSectionExplainEle('WTI 유가', 'ChartOilPrice', 'OilPriceChart', OilPriceChart, OilPriceExplain)
 
@@ -26,16 +26,16 @@ module.exports = async function createCommodityHTML () {
 
   const sectionHotRolled = await createSectionExplainEle('중국 열연', 'ChartHotRolledPrice', 'OilPriceChart', HotRolledChart, HotRolledExplain)
 
+  divSection.append(
+    sectionOil,
+    sectionBDI,
+    sectionHotRolled
+  )
+
   main.append(
     h1,
     document.createElement('br'),
-    span,
-    document.createElement('br'),
-    sectionOil,
-    document.createElement('br'),
-    sectionBDI,
-    document.createElement('br'),
-    sectionHotRolled,
+    divSection
   )
 
   return main;
