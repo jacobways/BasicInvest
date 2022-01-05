@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   KoreanExport.init({
     date: DataTypes.DATE,
-    value: DataTypes.INTEGER
+    value: DataTypes.INTEGER,
+    average: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'KoreanExport',

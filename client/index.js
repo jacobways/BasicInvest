@@ -1,46 +1,13 @@
-// template
-import LandingPageTemplate from "./pages/LandingPage.hbs";
-import KoreanTemplate from "./pages/Korean.hbs";
-import USATemplate from "./pages/USA.hbs";
-import GlobalTemplate from "./pages/Global.hbs";
+//css
+require('./css/style.css')
 
-const LandingPage = LandingPageTemplate();
-const Korean = KoreanTemplate();
-const USA = USATemplate();
-const Global = GlobalTemplate();
-
-const routes = {
-  "/": LandingPage,
-  "/korean": Korean,
-  "/usa": USA,
-  "/global": Global,
-};
-
-// entry point
-const initialRoutes = (element) => {
-  renderHTML(element, routes["/"]);
-
-  window.onpopstate = () =>
-    renderHTML(element, routes[window.location.pathname]);
-};
-
-// set browser history
-const historyRouterPush = (pathName, element) => {
-  window.history.pushState({}, pathName, window.location.origin + pathName);
-  renderHTML(element, routes[pathName]);
-};
-
-// render
-const renderHTML = (element, route) => {
-  element.innerHTML = route;
-};
-
+// router
+const { initialRoutes, historyRouterPush } = require("./router");
 
 const contentDiv = document.querySelector('#root')
 
 // Browser History
 initialRoutes(contentDiv);
-
 
 window.onload = () => {
 
@@ -57,3 +24,22 @@ window.onload = () => {
     });
   });
 };
+
+
+// 로그아웃 버튼 클릭 시 Navbar 변경
+document.getElementById('logout').onclick = function (event) {
+  event.preventDefault()
+  localStorage.removeItem('token')
+  document.getElementById('login').classList.remove('hidden')
+  document.getElementById('register').classList.remove('hidden')
+  document.getElementById('mypage').classList.add('hidden')
+  document.getElementById('logout').classList.add('hidden')
+}
+
+// 만약 로그인 상태에서 재랜더링 되면, Navbar에 마이페이지/로그아웃 띄워주기
+if ('token' in localStorage) {
+  document.getElementById('login').classList.add('hidden')
+  document.getElementById('register').classList.add('hidden')
+  document.getElementById('mypage').classList.remove('hidden')
+  document.getElementById('logout').classList.remove('hidden')
+}

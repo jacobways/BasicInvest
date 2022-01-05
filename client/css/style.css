@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+/* 테두리를 포함하여 박스를 계산하고, 콘텐츠가 레이아웃 벗어나지 않게 도와줌 */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8fa;
+  /* overflow-x:hidden; overflow-y:auto; */
+}
+
+nav {
+  height: 70px;
+  background: #262626;
+  
+}
+
+.logo {
+  position: absolute;
+  padding-left: 20px;
+  float: left;
+  line-height: 70px;
+  text-transform: uppercase;
+  font-size: 1.4em;
+}
+
+.nav-container {
+  float: right;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1000px;
+  line-height: 70px;
+  color: #ffffff;
+  text-decoration: none;
+  padding-right: 5rem;
+}
+
+/* span 태그 */
+.history {
+  padding-right: 0.6rem;
+  padding-left: 0.6rem;
+  font-size: 1.13rem;
+
+  /* span은 inline 블록이라 크기 조정이 불가능하게 되어있어 아래 문법 사용 */
+  display: inline-block;
+  height: 70px;
+}
+
+.history:hover {
+  background: #2581DC;
+  color: #ffffff
+}
+
+main{
+  padding-left: 0.6rem;
+  text-align: center;
+}
+
+
+/* section들을 감싸는 div */
+.divSection {
+  display: flex;
+
+  /* 화면을 벗어나면 아래로 내리기 */
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+
+/* 하나의 차트 덩어리 */
+section {
+  border: 1px solid #ccc;
+  width : 33rem;
+  border-radius: 10px;
+  background-color: 	#ffffff;
+  margin: 1.5rem 1.5rem 1.5rem 1.5rem;
+  flex: 0 1 auto;
+  font-family: Nanum Gothic;
+}
+
+section:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+
+/* 차트 이미지를 감싸는 div */
+.chartBox{
+  height: 15rem;
+  width: 30rem;
+  margin: 0 auto;
+}
+
+.explainBox{
+  /* background-color: #D7CDC6; */
+  /* background-color: #e8f3ff; */
+
+  background-color: #f2f4f7;
+  padding-top: 0.01rem;
+  padding-bottom: 0.01rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+}
+
+.explain {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  /* color: rgb(51, 61, 75); */
+  /* color: #8b95a1; */
+  /* color: white; */
+  color: #717171;
+}
+
+.trend {
+  font-weight : bold;
+}
+
+.opinion {
+  color: black;
+  font-weight : bold;
+}
+
+.hidden {
+  display: none;
+}
+
+#economy {
+  /* 중간에 위치시킴 */
+  margin: 0 auto;
+}
+
+.interpret {
+  margin: 2rem;
+}
+
+.guide {
+  margin-top: 2rem;
+  margin-bottom: 20rem;
+}

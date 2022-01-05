@@ -14,6 +14,9 @@ module.exports = {
       value: {
         type: Sequelize.INTEGER
       },
+      average: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

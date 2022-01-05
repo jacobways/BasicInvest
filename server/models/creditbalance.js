@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   };
   CreditBalance.init({
     date: DataTypes.DATE,
-    value: DataTypes.INTEGER
+    all: DataTypes.INTEGER,
+    kospi: DataTypes.INTEGER,
+    kosdaq: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'CreditBalance',

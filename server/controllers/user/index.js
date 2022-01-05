@@ -3,5 +3,5 @@ module.exports = {
   withdraw: require('./withdraw.js'),
   update: require('./update.js'),
   login: require('./login.js'),
-  logout: require('./logout.js')
+  userinfo: require('./userinfo.js')
 };

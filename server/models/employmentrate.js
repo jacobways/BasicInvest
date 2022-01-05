@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   EmploymentRate.init({
     date: DataTypes.DATE,
-    value: DataTypes.INTEGER
+    value: DataTypes.DECIMAL(3,1)
   }, {
     sequelize,
     modelName: 'EmploymentRate',

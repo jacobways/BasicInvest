@@ -11,7 +11,13 @@ module.exports = {
       date: {
         type: Sequelize.DATE
       },
-      value: {
+      all: {
+        type: Sequelize.INTEGER
+      },
+      kospi: {
+        type: Sequelize.INTEGER
+      },
+      kosdaq: {
         type: Sequelize.INTEGER
       },
       createdAt: {

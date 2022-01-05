@@ -9,14 +9,14 @@ module.exports = async (req, res) => {
   Kospi.findAll({
     where:{
       date: {
-        [Op.notBetween]: [startDate, endDate]
+        [Op.between]: [startDate, endDate]
       }
     }
   })
   .then((data)=>{
-    res.status(200).json({message: 'ok', data: data})
+    res.status(200).json({message: 'ok', data: data.map((el)=>el.dataValues).sort((a,b)=>a.date - b.date)})
   })
   .catch((err)=>{
-    res.status(404).send("구직자의 경력이 없습니다")
+    res.status(404).send("해당 날짜에 데이터가 없습니다.")
   })
 }
