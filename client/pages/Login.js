@@ -14,7 +14,7 @@ module.exports = function () {
   button.textContent = '로그인 하기'
   button.onclick = function(event) {
     event.preventDefault()
-    fetch("http://localhost:5000/login", {
+    fetch(`${process.env.API}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

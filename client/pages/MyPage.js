@@ -13,7 +13,7 @@ module.exports = function () {
 
     let token = localStorage.token
   
-    let response = await fetch(`http://localhost:5000/${token}`, {credentials: 'include'});
+    let response = await fetch(`${process.env.API}/${token}`, {credentials: 'include'});
     let json = await response.json();
 
     if (!json.data) {  // 토큰이 만료되었을 경우
@@ -44,7 +44,7 @@ module.exports = function () {
 
       buttonWithdraw.onclick = function (event) {
         event.preventDefault()
-        fetch(`http://localhost:5000/${localStorage.token}`, {
+        fetch(`${process.env.API}/${localStorage.token}`, {
           method: "DELETE",
         })
         // then문을 통해 랜딩페이지로 이동하기

@@ -18,7 +18,7 @@ module.exports = async function createOpinionElement () {
   divRegister.textContent = '장세(금융장세) 표시'
   articleIntro.appendChild(divRegister)
 
-  const PMIRes = await fetch(`http://localhost:5000/trend/pmi`);
+  const PMIRes = await fetch(`${process.env.API}/trend/pmi`);
   const PMIJson = await PMIRes.json();
   let PMILong = PMIJson.long;
   let PMIShort = PMIJson.short;
@@ -29,7 +29,7 @@ module.exports = async function createOpinionElement () {
     PMITrend = PMILong
   }
 
-  const EmployRes = await fetch(`http://localhost:5000/trend/employmentrate`);
+  const EmployRes = await fetch(`${process.env.API}/trend/employmentrate`);
   const EmployJson = await EmployRes.json();
   let EmployLong = EmployJson.long
   let EmployShort = EmployJson.short
@@ -40,7 +40,7 @@ module.exports = async function createOpinionElement () {
     EmployTrend = EmployLong
   }
 
-  const SpreadRes = await fetch(`http://localhost:5000/trend/tenminustwo`);
+  const SpreadRes = await fetch(`${process.env.API}/trend/tenminustwo`);
   const SpreadJson = await SpreadRes.json();
   const SpreadTrend = SpreadJson.data
 
