@@ -127,3 +127,16 @@ section:hover {
   display: none;
 }
 
+#economy {
+  /* 중간에 위치시킴 */
+  margin: 0 auto;
+}
+
+.interpret {
+  margin: 2rem;
+}
+
+.guide {
+  margin-top: 2rem;
+  margin-bottom: 20rem;
+}

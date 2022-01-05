@@ -114,6 +114,7 @@ module.exports = async function createOpinionElement () {
   }
   
   const articleExplain = document.createElement('article')
+  articleIntro.classList.add('interpret')
   const h3Explain = document.createElement('h3')
   h3Explain.textContent = `지표 해석`
   const employExplain = document.createElement('div')
@@ -125,6 +126,7 @@ module.exports = async function createOpinionElement () {
   articleExplain.append(h3Explain, employExplain, PMIExplain, spreadExplain)
 
   const articleOpinion = document.createElement('article')
+  articleOpinion.classList.add('guide')
   const h3Opinion = document.createElement('h3')
   h3Opinion.textContent = `투자의견`
   const KoreanDiv = document.createElement('div')
