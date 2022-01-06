@@ -40,8 +40,24 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      }
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            // publicPath: '/build/',
+            name: '[name].[ext]',
+            // outputPath: 'dist/',
+            // useRelativePaths: true,
+          }
+        }],
+      },
+      // {
+      //   test: /\.(jpg|jpeg|png|gif)$/,
+      //   use: ['file-loader'],
+      // },
     ]
   }
 }
