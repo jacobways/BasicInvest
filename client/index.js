@@ -34,6 +34,7 @@ document.getElementById('logout').onclick = function (event) {
   document.getElementById('register').classList.remove('hidden')
   document.getElementById('mypage').classList.add('hidden')
   document.getElementById('logout').classList.add('hidden')
+  historyRouterPush('/', contentDiv)
 }
 
 // 만약 로그인 상태에서 재랜더링 되면, Navbar에 마이페이지/로그아웃 띄워주기
