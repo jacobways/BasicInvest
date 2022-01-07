@@ -28,7 +28,7 @@ module.exports = {
     }),
     // 환경 변수 등록/관리 설정
     new webpack.EnvironmentPlugin({
-      API: 'https://basic-invest.herokuapp.com'
+      API: 'http://localhost:5000'
     })
   ],
 
