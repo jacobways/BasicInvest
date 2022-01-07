@@ -1,6 +1,6 @@
 module.exports = async function (canvasEle, startDate, endDate) {
   
-  let response = await fetch(`http://localhost:5000/foreignKospi?startDate=${startDate}&endDate=${endDate}`);
+  let response = await fetch(`${process.env.API}/foreignKospi?startDate=${startDate}&endDate=${endDate}`);
   let json = await response.json();
   let Data = json.data.map((el)=>el.value)
   let Average = json.data.map((el)=>el.average)

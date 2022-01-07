@@ -18,7 +18,7 @@ module.exports = async function createOpinionElement () {
   divRegister.textContent = '장세(금융장세) 표시'
   articleIntro.appendChild(divRegister)
 
-  const PMIRes = await fetch(`http://localhost:5000/trend/pmi`);
+  const PMIRes = await fetch(`${process.env.API}/trend/pmi`);
   const PMIJson = await PMIRes.json();
   let PMILong = PMIJson.long;
   let PMIShort = PMIJson.short;
@@ -29,7 +29,7 @@ module.exports = async function createOpinionElement () {
     PMITrend = PMILong
   }
 
-  const EmployRes = await fetch(`http://localhost:5000/trend/employmentrate`);
+  const EmployRes = await fetch(`${process.env.API}/trend/employmentrate`);
   const EmployJson = await EmployRes.json();
   let EmployLong = EmployJson.long
   let EmployShort = EmployJson.short
@@ -40,7 +40,7 @@ module.exports = async function createOpinionElement () {
     EmployTrend = EmployLong
   }
 
-  const SpreadRes = await fetch(`http://localhost:5000/trend/tenminustwo`);
+  const SpreadRes = await fetch(`${process.env.API}/trend/tenminustwo`);
   const SpreadJson = await SpreadRes.json();
   const SpreadTrend = SpreadJson.data
 
@@ -114,27 +114,35 @@ module.exports = async function createOpinionElement () {
   }
   
   const articleExplain = document.createElement('article')
-  articleIntro.classList.add('interpret')
+  articleExplain.classList.add('interpret')
   const h3Explain = document.createElement('h3')
   h3Explain.textContent = `지표 해석`
+  h3Explain.classList.add('interpretTitle')
   const employExplain = document.createElement('div')
-  employExplain.textContent = `미국 실업률 ${EmployTrend}`
+  employExplain.textContent = `미국 실업률 : ${EmployTrend}`
+  employExplain.classList.add('interpret1')
   const PMIExplain = document.createElement('div')
-  PMIExplain.textContent = `ISM 제조업지수 ${PMITrend}`
+  PMIExplain.textContent = `ISM 제조업지수 : ${PMITrend}`
+  PMIExplain.classList.add('interpret2')
   const spreadExplain = document.createElement('div')
-  spreadExplain.textContent = `미국 장단기금리차 ${SpreadTrend}`
+  spreadExplain.textContent = `미국 장단기금리차 : ${SpreadTrend}`
+  spreadExplain.classList.add('interpret3')
   articleExplain.append(h3Explain, employExplain, PMIExplain, spreadExplain)
 
   const articleOpinion = document.createElement('article')
   articleOpinion.classList.add('guide')
   const h3Opinion = document.createElement('h3')
-  h3Opinion.textContent = `투자의견`
+  h3Opinion.textContent = `투자 가이드`
+  h3Opinion.classList.add('guideTitle')
   const KoreanDiv = document.createElement('div')
   KoreanDiv.textContent = `미국 주식 : ${USAOpinion}`
+  KoreanDiv.classList.add('guide1')
   const USADiv = document.createElement('div')
   USADiv.textContent = `한국 주식 : ${KoreanOpinion}`
+  USADiv.classList.add('guide2')
   const CategoryOpinion = document.createElement('div')
   CategoryOpinion.textContent = `추천 종목 : ${SpreadOpinion}`
+  CategoryOpinion.classList.add('guide3')
   articleOpinion.append(h3Opinion, KoreanDiv, USADiv, CategoryOpinion)
 
   main.append(

@@ -16,14 +16,7 @@ nav {
   
 }
 
-.logo {
-  position: absolute;
-  padding-left: 20px;
-  float: left;
-  line-height: 70px;
-  text-transform: uppercase;
-  font-size: 1.4em;
-}
+
 
 .nav-container {
   float: right;
@@ -34,6 +27,22 @@ nav {
   color: #ffffff;
   text-decoration: none;
   padding-right: 5rem;
+}
+
+.logo {
+  /* position: absolute;
+  padding-left: 20px;
+  float: left;
+  line-height: 70px;
+  text-transform: uppercase;
+  font-size: 1.4em; */
+  background-image: url(logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 70px;
+  width: 80px;
+  margin-left: 3rem;
 }
 
 /* span 태그 */
@@ -84,6 +93,9 @@ section:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
+h1 {
+  margin-top: 4rem;
+}
 
 /* 차트 이미지를 감싸는 div */
 .chartBox{
@@ -133,10 +145,142 @@ section:hover {
 }
 
 .interpret {
-  margin: 2rem;
+  margin-top: 4rem;
+  font-family: Nanum Gothic;
 }
 
 .guide {
   margin-top: 2rem;
   margin-bottom: 20rem;
+  font-family: Nanum Gothic;
+}
+
+.interpretTitle{
+font-size: 1.7rem;
+}
+
+.interpret1 {
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+}
+
+.interpret2 {
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+}
+
+.interpret3 {
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+}
+
+.guideTitle{
+  font-size: 1.7rem;
+}
+
+.guide1 {
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.guide2 {
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.guide3 {
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+}
+
+
+/* .serviceIntro {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: relative;
+}
+.serviceIntro::after {
+  width: 100%;
+  height: 100%;
+  content: "";
+  background-image: url(./suggest.jpg);
+  background-repeat: no-repeat;
+  position: absolute;
+  opacity: 0.5;
+  left: 0;
+  z-index: -1;
+} */
+
+.IntroBox {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  width : 100%;
+  height : 40rem;
+  font-family: Nanum Gothic;
+}
+
+
+
+.homeImageBox {
+  text-align: right;
+  background-image: url(suggest.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width : 30%;  
+  height : 15rem;
+  margin-top: 5rem;
+  margin-left: 10rem;
+  /* opacity: 0.6; */
+  
+}
+
+.serviceBox {
+  width : 50%;
+  height : 15rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+  text-align: left;
+}
+
+.explain1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.explain2 {
+  font-size: 1.5rem;
+  color: rgb(51, 61, 75);
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.explain3 {
+  font-size: 1.5rem;
+  color: rgb(51, 61, 75);
+}
+
+/* #root {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 8rem;
+} */
+
+footer {
+  background-color: #ccc;
+  height: 4rem;
+  line-height: 2rem;
+  width: 100%;
+  margin-top: 0rem;
+  position: relative;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 4rem;
+  font-family: malgun Gothic;
+  color: #717171;
 }

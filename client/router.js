@@ -36,6 +36,7 @@ const initialRoutes = (element) => {
     renderHTML(element, routes[window.location.pathname]);
 };
 
+
 // set browser history
 const historyRouterPush = (pathName, element) => {
   window.history.pushState({}, pathName, window.location.origin + pathName);

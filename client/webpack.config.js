@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
 
 const { resolve } = require('path')
 
@@ -24,6 +25,10 @@ module.exports = {
     new MiniCssExtractPlugin({ filename: 'app.css' }),
     new CleanWebpackPlugin({
       cleanAfterEveryBuildPatterns: ['dist']
+    }),
+    // 환경 변수 등록/관리 설정
+    new webpack.EnvironmentPlugin({
+      API: 'http://localhost:5000'
     })
   ],
 
@@ -35,8 +40,24 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      }
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            // publicPath: '/build/',
+            name: '[name].[ext]',
+            // outputPath: 'dist/',
+            // useRelativePaths: true,
+          }
+        }],
+      },
+      // {
+      //   test: /\.(jpg|jpeg|png|gif)$/,
+      //   use: ['file-loader'],
+      // },
     ]
   }
 }

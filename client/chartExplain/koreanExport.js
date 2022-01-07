@@ -1,6 +1,6 @@
 module.exports = async function () {
   
-  let response = await fetch(`http://localhost:5000/trend/koreanexport`);
+  let response = await fetch(`${process.env.API}/trend/koreanexport`);
   let json = await response.json();
   let Data = json.data
 

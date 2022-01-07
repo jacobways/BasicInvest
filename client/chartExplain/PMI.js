@@ -1,6 +1,6 @@
 module.exports = async function () {
   
-  let response = await fetch(`http://localhost:5000/trend/pmi`);
+  let response = await fetch(`${process.env.API}/trend/pmi`);
   let json = await response.json();
   let Long = json.long
   let Short = json.short
