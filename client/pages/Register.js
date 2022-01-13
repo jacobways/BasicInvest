@@ -1,3 +1,17 @@
+const LandingPageTemplate = require("./LandingPage");
+const LandingPage = LandingPageTemplate();
+
+const historyRouterPush = (pathName, rootEle, newEle) => {
+  window.history.pushState({}, pathName, window.location.origin + pathName);
+  renderHTML(rootEle, newEle);
+};
+
+// render
+const renderHTML = async (element, route) => {
+  if (document.querySelector('main')) document.querySelector('main').remove();
+  element.appendChild(await route);
+};
+
 module.exports = function () {
   const main = document.createElement('main')
 
@@ -27,6 +41,10 @@ module.exports = function () {
         password: passwordInput.value,
       }),
     })
+    .then((data)=> 
+      historyRouterPush("/", document.querySelector('#root'), LandingPage)
+    )
+    
   }
   form.append(
     usernameInput, 
