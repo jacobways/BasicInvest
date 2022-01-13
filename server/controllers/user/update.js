@@ -1,6 +1,7 @@
 const { User } = require('../../models');
 const { Op } = require("sequelize");
 require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 module.exports = async (req, res) => {
 
@@ -18,8 +19,14 @@ module.exports = async (req, res) => {
       }, 
       {where:{id}}
       )
-      .then((data)=>{
-        res.status(200).send('회원 정보가 수정되었습니다.')
+      .then(async(data)=>{
+        const userData = await User.findOne({where:{id}});
+        const payload = userData.dataValues
+        delete payload.password
+        const token = jwt.sign(payload, process.env.ACCESS_SECRET, {
+          expiresIn: "2h",
+        });
+        res.status(200).json({data: token, message: '회원 정보가 수정되었습니다.'})
       })
       .catch((err)=>{
         console.log(err);

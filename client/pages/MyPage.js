@@ -19,11 +19,13 @@ module.exports = function () {
 
   const main = document.createElement('main')
 
-  let token = localStorage.token
+  
 
   let onChangeInfo = false;
 
   document.getElementById('mypage').onclick = async function createElement () {
+
+    let token = localStorage.token
 
     // main 아래 있는 노드 모두 삭제 (마이페이지 버튼 클릭 시 매번 토큰의 유효성에 따라 데이터 재생성 하기 위함)
     while (main.hasChildNodes()) {
@@ -42,7 +44,6 @@ module.exports = function () {
       let id = json.data.id
       let email = json.data.email
       let username = json.data.username
-      let password = json.data.password
 
       if (!onChangeInfo) {  // 수정중 x
         const Email = document.createElement('div')
@@ -97,29 +98,59 @@ module.exports = function () {
         const Password = document.createElement('input')
         Password.setAttribute('type', 'password')
         Password.setAttribute('placeholder', '새 비밀번호')
-        Password.setAttribute('value', password)
-        form.append(Username, Email, Password)
+        form.append(
+          Username,
+          document.createElement('br'),
+          Email,
+          document.createElement('br'),
+          Password
+        )
         const buttonChange = document.createElement('button')
         buttonChange.textContent = '회원정보 수정'
 
         buttonChange.onclick = function (event) {
           event.preventDefault()
 
-          fetch(`${process.env.API}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              id: id,
-              username: Username.value,
-              email: Email.value,
-              password: Password.value,
-            }),
-          })
+          if (Password.value) {
+            fetch(`${process.env.API}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                id: id,
+                username: Username.value,
+                email: Email.value,
+                password: Password.value,
+              }),
+            })
+            .then(res=>res.json())
+            .then(data=>{
+              localStorage.setItem('token', data.data)
+              onChangeInfo = false;
+              createElement()
+            })
+          } else {
+            fetch(`${process.env.API}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                id: id,
+                username: Username.value,
+                email: Email.value,
+              }),
+            })
+            .then(res=>res.json())
+            .then(data=>{
+              localStorage.setItem('token', data.data)
+              onChangeInfo = false;
+              createElement()
+            })
+          }
 
-          onChangeInfo = false;
-          createElement()
+
         }
         main.append(
           form, 

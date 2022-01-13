@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
   });
 
   if (!userInfo) {
-    res.status(400).send({ data: null, message: "가입된 정보가 없습니다." });
+    res.status(400).json({ data: null, message: "가입된 정보가 없습니다." });
   } else {
     
     const payload = userInfo.dataValues
