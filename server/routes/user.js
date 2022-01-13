@@ -4,7 +4,7 @@ const userController = require("../controllers/user")
 
 router.post('/', userController.register);
 router.delete('/:token', userController.withdraw);
-// router.patch('/', userController.update);
+router.patch('/', userController.update);
 router.post('/login', userController.login);
 router.get('/:token', userController.userinfo);
 
