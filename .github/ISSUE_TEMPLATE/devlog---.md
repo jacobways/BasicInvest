@@ -1,7 +1,7 @@
 ---
 name: Devlog 양식
 about: Devlog 작성 양식
-title: "[21.12.xx] Devlog"
+title: "[22.xx.xx] Devlog"
 labels: ''
 assignees: ''
 
