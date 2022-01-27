@@ -4,6 +4,7 @@ require('./css/style.css')
 // router
 const { initialRoutes, historyRouterPush } = require("./router");
 
+
 const contentDiv = document.querySelector('#root')
 
 // Browser History
@@ -12,7 +13,7 @@ initialRoutes(contentDiv);
 window.onload = () => {
 
   const historyLinker = document.querySelectorAll(".history");
-  
+
   historyLinker.forEach((element) => {
 
     element.addEventListener("click", (event) => {

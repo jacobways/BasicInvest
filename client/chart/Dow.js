@@ -71,7 +71,7 @@ module.exports = async function (canvasEle, startDate, endDate) {
                 // beginAtZero: true
                 min : Math.round ( (Math.min(...Data) - 1000) / 1000 ) * 1000
             },
-            x: xObj
+            // x: xObj
         },
         elements: {
             point:{

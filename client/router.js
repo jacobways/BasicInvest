@@ -7,6 +7,7 @@ const OpinionTemplate = require("./pages/Opinion.js");
 const RegisterTemplate = require("./pages/Register.js")
 const LoginTemplate = require("./pages/Login.js")
 const MyPageTemplate = require("./pages/MyPage.js")
+const ErrorTemplate = require("./pages/Error")
 
 const LandingPage = LandingPageTemplate();
 const Korean = KoreanTemplate();
@@ -16,6 +17,7 @@ const Opinion = OpinionTemplate();
 const Register = RegisterTemplate();
 const Login = LoginTemplate();
 const MyPage = MyPageTemplate();
+const Error = ErrorTemplate();
 
 const routes = {
   "/": LandingPage,
@@ -30,7 +32,8 @@ const routes = {
 
 // entry point
 const initialRoutes = (element) => {
-  renderHTML(element, routes["/"]);
+  renderHTML(element, routes[window.location.pathname]);
+  // renderHTML(element, routes["/"]);여기서 수정함
 
   window.onpopstate = () =>
     renderHTML(element, routes[window.location.pathname]);

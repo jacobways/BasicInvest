@@ -17,6 +17,10 @@ module.exports = {
     filename: '[name].js'
   },
 
+  devServer: {
+    historyApiFallback: true,
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html', // output file name
