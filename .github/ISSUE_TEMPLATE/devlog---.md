@@ -15,6 +15,3 @@ assignees: ''
 
 ## 내일 해야 할 일
 - 내용
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
